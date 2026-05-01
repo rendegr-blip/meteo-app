@@ -1,0 +1,67 @@
+METTRE L'APP SUR LE WEB AVEC NETLIFY
+====================================
+
+L'app est prete pour Netlify:
+- le frontend React est compile avec npm run build
+- l'API meteo passe par des Netlify Functions
+- /api/weather/Paris marche aussi en ligne grace a netlify.toml
+
+ETAPE 1 - Mettre le code sur GitHub
+-----------------------------------
+
+Dans un terminal:
+
+cd C:\Users\RINALDO\Desktop\Meteo\meteo-app
+git add .
+git commit -m "Ajout previsions pluie et Netlify"
+git push origin main
+
+ETAPE 2 - Deployer sur Netlify
+------------------------------
+
+1. Allez sur https://app.netlify.com
+2. Cliquez "Add new site"
+3. Cliquez "Import an existing project"
+4. Choisissez GitHub
+5. Selectionnez le repository meteo-app
+6. Netlify lit automatiquement netlify.toml
+7. Cliquez "Deploy"
+
+Configuration attendue:
+
+Build command:
+npm run build
+
+Publish directory:
+build
+
+Functions directory:
+netlify/functions
+
+ETAPE 3 - Tester en ligne
+-------------------------
+
+Quand Netlify donne l'URL du site, ouvrez:
+
+https://votre-site.netlify.app
+
+Puis testez aussi l'API:
+
+https://votre-site.netlify.app/api/weather/Paris
+
+MISES A JOUR
+------------
+
+Chaque nouvelle modification:
+
+git add .
+git commit -m "Mon changement"
+git push origin main
+
+Netlify redeploie automatiquement.
+
+OPTION
+------
+
+Vous pouvez ajouter WEATHER_API_KEY dans Netlify:
+Site settings > Environment variables > Add variable
